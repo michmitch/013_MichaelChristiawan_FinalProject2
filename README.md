@@ -1,7 +1,7 @@
 # Finalproject2
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.11.
-backend repo: https://github.com/michmitch/FinalProject1-H8-OCBC/tree/main/Project/FinalProject1-013-Local
+Backend repo: https://github.com/michmitch/FinalProject1-H8-OCBC/tree/main/Project/FinalProject1-013-Local
 
 ## Development server
 
