@@ -1,0 +1,29 @@
+<table class="table table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>Card Owner</th>
+            <th>Card Number</th>
+            <th>Exp. Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let paymentDetail of paymentDetailService.paymentDetailList">
+            <td> {{ paymentDetail.cardOwnerName | titlecase}} </td>
+            <td> {{ paymentDetail.cardNumber }} </td>
+            <td> {{ paymentDetail.expirationDate }} </td>
+            <td>
+                <!-- <a style="cursor: pointer" class="far fa-edit fa-lg text-warning me-2" 
+                (click)="fillFormForEdit(paymentDetail)"></a>
+                <a style="cursor: pointer;" class="far fa-trash-alt fa-lg text-danger" 
+                (click)="deletePaymentDetail(paymentDetail.paymentDetailId, paymentDetail.cardOwnerName)"></a> -->
+                <button class="btn btn-warning btn-sm me-1" (click)="fillFormForEdit(paymentDetail)">
+                    <i class="bi bi-pencil-fill"></i> Edit
+                </button>
+                <button class="btn btn-danger btn-sm me-1" (click)="deletePaymentDetail(paymentDetail.paymentDetailId, paymentDetail.cardOwnerName)">
+                    <i class="bi bi-trash-fill"></i> Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

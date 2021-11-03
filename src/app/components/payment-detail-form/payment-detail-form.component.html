@@ -1,0 +1,44 @@
+<form #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="paymentDetailId" [value]="paymentDetailService.formData.paymentDetailId"/>
+    <div class="form-group">
+        <label>CARD OWNER NAME</label>
+        <input type="text" name="cardOwnerName" class="form-control form-control-lg" 
+        placeholder="Full Name" #cardOwnerName="ngModel" [(ngModel)]="paymentDetailService.formData.cardOwnerName" required>
+        <span *ngIf="(cardOwnerName.invalid && cardOwnerName.touched)" style="color: red;">
+            Card Owner Name required
+        </span>
+    </div>
+    <div class="form-group">
+        <label>CARD NUMBER</label>
+        <input type="text" name="cardNumber" class="form-control form-control-lg" 
+        placeholder="16 Digit Card Number" #cardNumber="ngModel" [(ngModel)]="paymentDetailService.formData.cardNumber" required 
+        minlength="16" maxlength="16" pattern="^[0-9]+$">
+        <span *ngIf="(cardNumber.invalid && cardNumber.touched || cardNumber.errors?.pattern)" style="color: red;">
+            Card Number Must Be 16 Digit Number
+        </span>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6 col-lg-6">
+            <label>SECURITY CODE</label>
+            <input type="password" name="securityCode" class="form-control form-control-lg" 
+            placeholder="Security Code" #securityCode="ngModel" [(ngModel)]="paymentDetailService.formData.securityCode" required
+            minlength="3" maxlength="3" pattern="^[0-9]+$">
+            <span *ngIf="(securityCode.invalid && securityCode.touched || securityCode.errors?.pattern)" style="color: red;">
+                Security Code Must Be Valid (3 Digit Number)
+            </span>
+        </div>
+        <div class="form-group col-md-6 col-lg-6">
+            <label>VALIDE THROUGH</label>
+            <input type="text" name="expirationDate" class="form-control form-control-lg" 
+            placeholder="MM/YY" #expirationDate="ngModel" [(ngModel)]="paymentDetailService.formData.expirationDate" required
+            pattern="^(0[1-9]|1[0-2])\/([0-9]{2})$">
+            <span *ngIf="(expirationDate.invalid && expirationDate.touched) && expirationDate.errors?.pattern" style="color: red;">
+                Must Be A Valid MM/YY Format
+            </span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <button [disabled]="form.invalid" type="submit" class="btn btn-block btn-info btn-lg" style="color: white;">SUBMIT</button>
+    </div>
+</form>
